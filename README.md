@@ -1,1 +1,1 @@
-# Painter
+# Painter Group Project
