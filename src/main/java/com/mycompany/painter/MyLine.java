@@ -89,6 +89,8 @@ public class MyLine extends JPanel {
         }
     }
 
+    /***  
+     ***/
     public static class Line {
         private List<Point> points;   // List to store all points in a single drawn line 
         private Color color;          // Color of a single drawn line 

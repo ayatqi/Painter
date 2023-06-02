@@ -8,6 +8,7 @@ package com.mycompany.painter;
  *
  * @author Ayat
  */
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -26,33 +27,48 @@ public class Painter extends JFrame {
         // Create the Colors button
         JButton colorsButton = new JButton("Colors");
         colorsButton.setPreferredSize(new Dimension(110, 30));
-        
+
+        JButton shapeButton = new JButton("Shapes");
+        shapeButton.setPreferredSize(new Dimension(110, 30));
+
         colorsButton.addActionListener(e -> {
             // Create the color chooser dialog
             JDialog dialog = new JDialog(this, "Color Chooser", true);
             dialog.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
             // Add the MyColour panel to the dialog
-            dialog.getContentPane().add(new MyColour(line));
+            dialog.getContentPane().add(new MyColor(line));
             dialog.pack();
             dialog.setLocationRelativeTo(this);
             dialog.setVisible(true);
         });
 
-        // Create the button panel and add the colors button
+        shapeButton.addActionListener(e -> {
+            // Create the shapes dialog
+            JDialog dialog = new JDialog(this, "Shapes", true);
+            dialog.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+            // Add the MyShapes panel to the dialog
+            dialog.getContentPane().add(new MyShapes());
+            dialog.pack();
+            dialog.setLocationRelativeTo(this);
+            dialog.setVisible(true);
+        });
+
+        // Create the button panel and add the buttons
         JPanel buttonPanel = new JPanel();
         buttonPanel.add(colorsButton);
+        buttonPanel.add(shapeButton);
 
         // Add the button panel to the content pane
         contentPane.add(buttonPanel, BorderLayout.PAGE_END);
 
         // Set the content pane, size, and other properties of the frame
-        setContentPane(contentPane); // Set the content pane of the frame to be our custom JPanel.
-        setSize(800, 600); // Set the size of the frame.
-        setDefaultCloseOperation(EXIT_ON_CLOSE); // Set what happens when we close the frame.
-        setVisible(true); // Make the frame visible.
+        setContentPane(contentPane);
+        setSize(800, 600);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setVisible(true);
     }
 
     public static void main(String[] a) {
-        new Painter(); // Create a new instance of our Painter class.
+        new Painter();
     }
 }

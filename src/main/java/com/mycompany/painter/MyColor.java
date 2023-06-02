@@ -12,10 +12,10 @@ import javax.swing.*;
 import javax.swing.event.*;
 import java.awt.*;
 
-public class MyColour extends JPanel {
+public class MyColor extends JPanel {
     private MyLine line;
 
-    public MyColour(MyLine line) {
+    public MyColor(MyLine line) {
         this.line = line;
         setPreferredSize(new Dimension(600, 300));
         setBackground(Color.LIGHT_GRAY);
