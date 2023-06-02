@@ -26,6 +26,7 @@ public class Painter extends JFrame {
         // Create the Colors button
         JButton colorsButton = new JButton("Colors");
         colorsButton.setPreferredSize(new Dimension(110, 30));
+        
         colorsButton.addActionListener(e -> {
             // Create the color chooser dialog
             JDialog dialog = new JDialog(this, "Color Chooser", true);
@@ -45,13 +46,13 @@ public class Painter extends JFrame {
         contentPane.add(buttonPanel, BorderLayout.PAGE_END);
 
         // Set the content pane, size, and other properties of the frame
-        setContentPane(contentPane);
-        setSize(800, 600);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setVisible(true);
+        setContentPane(contentPane); // Set the content pane of the frame to be our custom JPanel.
+        setSize(800, 600); // Set the size of the frame.
+        setDefaultCloseOperation(EXIT_ON_CLOSE); // Set what happens when we close the frame.
+        setVisible(true); // Make the frame visible.
     }
 
     public static void main(String[] a) {
-        new Painter();
+        new Painter(); // Create a new instance of our Painter class.
     }
 }
