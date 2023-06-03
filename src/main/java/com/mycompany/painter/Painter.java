@@ -11,14 +11,18 @@ package com.mycompany.painter;
 
 import javax.swing.*;
 import java.awt.*;
+import javax.swing.*;
+import java.awt.*;
 
 public class Painter extends JFrame {
     private MyLine line;
+    private MyShapes shapes;
 
     public Painter() {
         super("Painter");
 
         line = new MyLine(4);
+        shapes = new MyShapes(line);
 
         // Create the content pane
         JPanel contentPane = new JPanel(new BorderLayout());
@@ -47,7 +51,7 @@ public class Painter extends JFrame {
             JDialog dialog = new JDialog(this, "Shapes", true);
             dialog.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
             // Add the MyShapes panel to the dialog
-            dialog.getContentPane().add(new MyShapes());
+            dialog.getContentPane().add(shapes);
             dialog.pack();
             dialog.setLocationRelativeTo(this);
             dialog.setVisible(true);
