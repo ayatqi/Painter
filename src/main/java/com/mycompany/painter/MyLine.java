@@ -78,9 +78,7 @@ public class MyLine extends JPanel {
 
         // Iterate over each shape and draw it
         for (Shape shape : shapes) {
-            if (drawSquare || drawingMode || !(shape instanceof Square)) {
-                shape.draw(g);
-            }
+            shape.draw(g);
         }
     }
 
