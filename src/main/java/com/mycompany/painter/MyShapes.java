@@ -25,6 +25,7 @@ public class MyShapes extends JPanel {
         JButton squareButton = new JButton("Square");
         JButton ovalButton = new JButton("Oval");
         JButton triangleButton = new JButton("Triangle");
+        JButton circleButton = new JButton("Circle ");
         JButton brushButton = new JButton("Brush");
 
         squareButton.addActionListener(e -> {
@@ -47,6 +48,13 @@ public class MyShapes extends JPanel {
             line.setDrawSquare(false); // Disable drawing Square/Rectangles
             line.setDrawingMode(true); // Enable drawing mode
         });
+        
+         circleButton.addActionListener(e -> {
+            // Handle brush button click event
+            // Code to perform when the brush button is clicked
+            line.setDrawSquare(false); // Disable drawing Square/Rectangles
+            line.setDrawingMode(true); // Enable drawing mode
+        });
 
         brushButton.addActionListener(e -> {
             // Handle brush button click event
@@ -58,6 +66,7 @@ public class MyShapes extends JPanel {
         toolbar.add(squareButton);
         toolbar.add(ovalButton);
         toolbar.add(triangleButton);
+        toolbar.add(circleButton);
         toolbar.add(brushButton);
 
         setLayout(new BorderLayout());
@@ -75,28 +84,4 @@ public class MyShapes extends JPanel {
         line.setShapes(savedShapes); // Restore the previously drawn shapes
     }
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            JFrame frame = new JFrame("My Shapes");
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-            MyLine line = new MyLine(5);
-            MyShapes shapes = new MyShapes(line);
-
-            JButton saveButton = new JButton("Save");
-            JButton restoreButton = new JButton("Restore");
-
-            saveButton.addActionListener(e -> shapes.saveShapes());
-            restoreButton.addActionListener(e -> shapes.restoreShapes());
-
-            JPanel buttonPanel = new JPanel();
-            buttonPanel.add(saveButton);
-            buttonPanel.add(restoreButton);
-
-            frame.getContentPane().add(shapes, BorderLayout.CENTER);
-            frame.getContentPane().add(buttonPanel, BorderLayout.PAGE_END);
-            frame.setSize(800, 600);
-            frame.setVisible(true);
-        });
-    }
 }

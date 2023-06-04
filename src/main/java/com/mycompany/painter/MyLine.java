@@ -78,7 +78,7 @@ public class MyLine extends JPanel {
 
         // Iterate over each shape and draw it
         for (Shape shape : shapes) {
-            if (!drawSquare || !drawingMode || !(shape instanceof Square)) {
+            if (drawSquare || drawingMode || !(shape instanceof Square)) {
                 shape.draw(g);
             }
         }
@@ -91,14 +91,22 @@ public class MyLine extends JPanel {
         public void mousePressed(MouseEvent me) {
             startPoint = me.getPoint();  // Store the starting point of the shape
 
-            if (!drawSquare || !drawingMode) {
+            if (drawSquare && drawingMode) {
+                int width = 0;
+                int height = 0;
+                Square square = new Square(startPoint, width, height);
+                square.setColor(lineColor);  // Set the color of the new square to be drawn
+                square.setWidth(widthSize);  // Set the width of the new square to be drawn
+                addShape(square);  // Add a new square to the list of shapes drawn
+                
+            } else {
                 Line line = new Line();
                 line.setColor(lineColor);  // Set the color of the new line to be drawn
                 line.setWidth(widthSize);  // Set the width of the new line to be drawn
-                line.getPoints().add(startPoint);  // Add a new point to the new line being drawn at mouse press location
-                addShape(line);  // Add a new line to list of shapes drawn
+                line.getPoints().add(startPoint);  // Add a new point to the new line being drawn at the mouse press location
+                addShape(line);  // Add a new line to the list of shapes drawn
             }
-        }
+    }
 
         @Override
         public void mouseReleased(MouseEvent me) {
@@ -109,6 +117,7 @@ public class MyLine extends JPanel {
                 square.setColor(lineColor);  // Set the color of the new square to be drawn
                 square.setWidth(widthSize);  // Set the width of the new square to be drawn
                 addShape(square);  // Add a new square to list of shapes drawn
+                repaint();
             }
         }
 
