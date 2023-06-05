@@ -8,6 +8,7 @@ package com.mycompany.painter;
  *
  * author Ayat
  */
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -39,6 +40,7 @@ public class MyShapes extends JPanel {
             // Handle oval button click event
             // Code to perform when the oval button is clicked
             line.setDrawSquare(false); // Disable drawing Square/Rectangles
+            line.setDrawOval(true);
             line.setDrawingMode(true); // Enable drawing mode
         });
 
@@ -48,8 +50,8 @@ public class MyShapes extends JPanel {
             line.setDrawSquare(false); // Disable drawing Square/Rectangles
             line.setDrawingMode(true); // Enable drawing mode
         });
-        
-         circleButton.addActionListener(e -> {
+
+        circleButton.addActionListener(e -> {
             // Handle brush button click event
             // Code to perform when the brush button is clicked
             line.setDrawSquare(false); // Disable drawing Square/Rectangles
