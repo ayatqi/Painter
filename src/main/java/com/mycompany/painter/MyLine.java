@@ -21,6 +21,7 @@ public class MyLine extends JPanel {
     private Color lineColor;        // Color of the line
     private boolean drawSquare;     // Flag to indicate if Square/Rectangle should be drawn
     private boolean drawOval;       //Flag to indicate if Oval should be drawn
+    private boolean drawTriangle;       //Flag to indicate if Triangle should be drawn
     private boolean drawingMode;    // Flag to indicate the current drawing mode
     private List<Shape> shapes;     // List to store all the shapes drawn
 
@@ -29,6 +30,7 @@ public class MyLine extends JPanel {
         this.lineColor = Color.BLACK;  // Initialize the color of the line to black
         this.drawSquare = false; // Initialize the flag to false
         this.drawOval = false;  //Initialize the flag to false
+        this.drawTriangle = false;  //Initialize the flag to false
         this.drawingMode = false; // Initialize the drawing mode to false
         this.shapes = new ArrayList<>();  // Initialize the list to store all the shapes drawn
         setSize(new Dimension(800, 600));  // Set the size of the panel
@@ -58,6 +60,11 @@ public class MyLine extends JPanel {
 
     public void setDrawOval(boolean drawOval){
         this.drawOval = drawOval;   // Set the flag to indicate if Oval should be drawn
+        repaint();  //Repaint the panel tot update the drawing
+    }
+    
+    public void setDrawTriangle(boolean drawTriangle){
+        this.drawTriangle = drawTriangle;   // Set the flag to indicate if Triangle should be drawn
         repaint();  //Repaint the panel tot update the drawing
     }
 
@@ -126,6 +133,21 @@ public class MyLine extends JPanel {
                 line.getPoints().add(startPoint);  // Add a new point to the new line being drawn at the mouse press location
                 addShape(line);  // Add a new line to the list of shapes drawn
             }
+             if (drawTriangle && drawingMode){
+                int width = 0;
+                int height = 0;
+                Triangle triangle = new Triangle(startPoint, width, height);
+                triangle.setColor(lineColor);
+                triangle.setWidth(widthSize);
+                addShape(triangle);
+            }
+            else{
+                Line line = new Line();
+                line.setColor(lineColor);  // Set the color of the new line to be drawn
+                line.setWidth(widthSize);  // Set the width of the new line to be drawn
+                line.getPoints().add(startPoint);  // Add a new point to the new line being drawn at the mouse press location
+                addShape(line);  // Add a new line to the list of shapes drawn
+            }
 
         }
 
@@ -148,17 +170,31 @@ public class MyLine extends JPanel {
                 oval.setWidth(widthSize);  // Set the width of the new oval to be drawn
                 addShape(oval);  // Add a new oval to the list of shapes drawn
             }
+            else if (drawTriangle && drawingMode) {  //getting the X and Y for an triangle
+                int width = me.getX() - startPoint.x;
+                int height = me.getY() - startPoint.y;
+                Triangle triangle = new Triangle(startPoint, width, height);
+                triangle.setColor(lineColor);  // Set the color of the new triangle to be drawn
+                triangle.setWidth(widthSize);  // Set the width of the new triangle to be drawn
+                addShape(triangle);  // Add a new triangle to the list of shapes drawn
+            }
         }
 
         @Override
         public void mouseDragged(MouseEvent me) {
-            if (!drawSquare || !drawingMode) {
+             if (drawSquare && drawingMode) {
+                
+            } else if (drawOval && drawingMode) {
+               
+            } else if (drawTriangle && drawingMode) {
+                
+            } else {
                 Shape shape = shapes.get(shapes.size() - 1);
                 if (shape instanceof Line) {
                     Line line = (Line) shape;
-                    line.getPoints().add(me.getPoint());  // Add a new point to current line being drawn as mouse is dragged
+                    line.getPoints().add(me.getPoint());
                 }
-                repaint();   // Repaint panel with updated drawing
+                repaint();   
             }
         }
     }
@@ -255,4 +291,30 @@ public class MyLine extends JPanel {
             g2d.drawOval(startPoint.x, startPoint.y, width, height);  // Draw an oval with the given parameters
         }
     }
+    
+     public static class Triangle extends Shape {
+        private Point startPoint;
+        private int width;
+        private int height;
+
+        public Triangle(Point startPoint, int width, int height) {
+            this.startPoint = startPoint;
+            this.width = width;
+            this.height = height;
+        }
+
+        @Override
+        public void draw(Graphics g) {
+            Graphics2D g2d = (Graphics2D) g;
+            g2d.setColor(getColor());
+            g2d.setStroke(new BasicStroke(getWidth()));
+
+            int[] xPoints = {startPoint.x, startPoint.x + width / 2, startPoint.x + width};
+            int[] yPoints = {startPoint.y + height, startPoint.y, startPoint.y + height};
+            int nPoints = 3;
+
+            g2d.drawPolygon(xPoints, yPoints, nPoints);
+        }
+    }
+
 }

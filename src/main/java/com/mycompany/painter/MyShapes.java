@@ -48,9 +48,10 @@ public class MyShapes extends JPanel {
         triangleButton.addActionListener(e -> {
             // Handle triangle button click event
             // Code to perform when the triangle button is clicked
-            line.setDrawSquare(false); // Disable drawing Square/Rectangles
+            line.setDrawSquare(false); // Disable drawing squares/rectangles
+            line.setDrawOval(false); // Disable drawing ovals
+            line.setDrawTriangle(true); // Enable drawing triangles
             line.setDrawingMode(true); // Enable drawing mode
-            line.setDrawOval(false);
         });
 
         circleButton.addActionListener(e -> {
