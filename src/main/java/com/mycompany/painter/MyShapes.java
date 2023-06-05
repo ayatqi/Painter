@@ -34,6 +34,7 @@ public class MyShapes extends JPanel {
             // Code to perform when the square button is clicked
             line.setDrawSquare(true); // Enable drawing Square/Rectangles
             line.setDrawingMode(true); // Enable drawing mode
+            line.setDrawOval(false);
         });
 
         ovalButton.addActionListener(e -> {
@@ -49,6 +50,7 @@ public class MyShapes extends JPanel {
             // Code to perform when the triangle button is clicked
             line.setDrawSquare(false); // Disable drawing Square/Rectangles
             line.setDrawingMode(true); // Enable drawing mode
+            line.setDrawOval(false);
         });
 
         circleButton.addActionListener(e -> {
@@ -56,12 +58,14 @@ public class MyShapes extends JPanel {
             // Code to perform when the brush button is clicked
             line.setDrawSquare(false); // Disable drawing Square/Rectangles
             line.setDrawingMode(true); // Enable drawing mode
+            line.setDrawOval(false);
         });
 
         brushButton.addActionListener(e -> {
             // Handle brush button click event
             // Code to perform when the brush button is clicked
             line.setDrawSquare(false); // Disable drawing Square/Rectangles
+            line.setDrawOval(false);
             line.setDrawingMode(true); // Enable drawing mode
         });
 
