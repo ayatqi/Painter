@@ -14,6 +14,8 @@ package com.mycompany.painter;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Painter extends JFrame {
     private MyLine line;
@@ -35,6 +37,9 @@ public class Painter extends JFrame {
 
         JButton shapeButton = new JButton("Shapes");
         shapeButton.setPreferredSize(new Dimension(110, 30));
+
+        JButton clearButton = new JButton("Clear Canvas");
+        clearButton.setPreferredSize(new Dimension(110, 30));
 
         colorsButton.addActionListener(e -> {
             // Create the color chooser dialog
@@ -58,10 +63,19 @@ public class Painter extends JFrame {
             dialog.setVisible(true);
         });
 
+        clearButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                line.clear();
+                repaint();
+            }
+        });
+
         // Create the button panel and add the buttons
         JPanel buttonPanel = new JPanel();
         buttonPanel.add(colorsButton);
         buttonPanel.add(shapeButton);
+        buttonPanel.add(clearButton);
 
         // Add the button panel to the content pane
         contentPane.add(buttonPanel, BorderLayout.PAGE_END);

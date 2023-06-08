@@ -90,10 +90,16 @@ public class MyLine extends JPanel {
         return shapes.toArray(new Shape[0]); // Return the shapes drawn in the current mode
     }
 
-    public void clearShapes() {
+    public void  void() {
         shapes.clear(); // Clear the shapes drawn on the panel
         repaint(); // Repaint the panel to update the drawing
     }
+    
+    public void clear() {
+    shapes.clear(); // Clear the shapes drawn on the panel
+    repaint(); // Repaint the panel to update the drawing
+}
+
 
     @Override
     protected void paintComponent(Graphics g) {
