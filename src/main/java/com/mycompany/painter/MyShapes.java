@@ -6,7 +6,10 @@ package com.mycompany.painter;
 
 /**
  *
- * author Ayat
+ * 1. Ayat Abdulaziz Gaber Al-Khulaqi (ID: 1191202335)
+ * 2. Mohammad Harez Bin Hafez (ID: 1191202413)
+ * 3. Nur Irdina Binti Hassan (ID: 1191202351)
+ * 4. Adam Arief Bin Rodzlan (ID: 1191202129)    
  */
 
 import javax.swing.*;
