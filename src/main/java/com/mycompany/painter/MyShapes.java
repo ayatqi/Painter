@@ -33,41 +33,51 @@ public class MyShapes extends JPanel {
             // Handle square button click event
             // Code to perform when the square button is clicked
             line.setDrawSquare(true); // Enable drawing Square/Rectangles
-            line.setDrawingMode(true); // Enable drawing mode
+            line.setDrawTriangle(false);
             line.setDrawOval(false);
+            line.setDrawCircle(false);
+            line.setDrawingMode(true); // Enable drawing mode
+            
         });
 
         ovalButton.addActionListener(e -> {
             // Handle oval button click event
             // Code to perform when the oval button is clicked
-            line.setDrawSquare(false); // Disable drawing Square/Rectangles
+            line.setDrawSquare(false);
+            line.setDrawTriangle(false);
             line.setDrawOval(true);
-            line.setDrawingMode(true); // Enable drawing mode
+            line.setDrawCircle(false);
+            line.setDrawingMode(true); 
         });
 
         triangleButton.addActionListener(e -> {
             // Handle triangle button click event
             // Code to perform when the triangle button is clicked
-            line.setDrawSquare(false); // Disable drawing squares/rectangles
-            line.setDrawOval(false); // Disable drawing ovals
-            line.setDrawTriangle(true); // Enable drawing triangles
-            line.setDrawingMode(true); // Enable drawing mode
+            line.setDrawSquare(false);
+            line.setDrawTriangle(true);
+            line.setDrawOval(false);
+            line.setDrawCircle(false);
+            line.setDrawingMode(true); 
         });
 
         circleButton.addActionListener(e -> {
             // Handle brush button click event
             // Code to perform when the brush button is clicked
-            line.setDrawSquare(false); // Disable drawing Square/Rectangles
-            line.setDrawingMode(true); // Enable drawing mode
+            line.setDrawSquare(false);
+            line.setDrawTriangle(false);
             line.setDrawOval(false);
+            line.setDrawCircle(true);
+            line.setDrawingMode(true); 
         });
 
         brushButton.addActionListener(e -> {
             // Handle brush button click event
             // Code to perform when the brush button is clicked
-            line.setDrawSquare(false); // Disable drawing Square/Rectangles
+             line.setDrawSquare(false);
+            line.setDrawTriangle(false);
             line.setDrawOval(false);
-            line.setDrawingMode(true); // Enable drawing mode
+            line.setDrawCircle(false);
+            line.setDrawingMode(true); 
         });
 
         toolbar.add(squareButton);

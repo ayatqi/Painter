@@ -11,8 +11,6 @@ package com.mycompany.painter;
 
 import javax.swing.*;
 import java.awt.*;
-import javax.swing.*;
-import java.awt.*;
 
 public class Painter extends JFrame {
     private MyLine line;

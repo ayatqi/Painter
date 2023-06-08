@@ -22,6 +22,7 @@ public class MyLine extends JPanel {
     private boolean drawSquare;     // Flag to indicate if Square/Rectangle should be drawn
     private boolean drawOval;       //Flag to indicate if Oval should be drawn
     private boolean drawTriangle;       //Flag to indicate if Triangle should be drawn
+    private boolean drawCircle;       //Flag to indicate if Circle should be drawn
     private boolean drawingMode;    // Flag to indicate the current drawing mode
     private List<Shape> shapes;     // List to store all the shapes drawn
 
@@ -68,6 +69,11 @@ public class MyLine extends JPanel {
         repaint();  //Repaint the panel tot update the drawing
     }
 
+    public void setDrawCircle (boolean drawCircle){
+        this.drawCircle = drawCircle;   // Set the flag to indicate if Oval should be drawn
+        repaint();  //Repaint the panel tot update the drawing
+    }
+    
     public void setDrawingMode(boolean drawingMode) {
         this.drawingMode = drawingMode; // Set the current drawing mode
     }
@@ -121,7 +127,7 @@ public class MyLine extends JPanel {
             if (drawOval && drawingMode){
                 int width = 0;
                 int height = 0;
-                Oval oval = new Oval(startPoint, width, height);
+                Oval oval = new Oval(startPoint, width, width);
                 oval.setColor(lineColor);
                 oval.setWidth(widthSize);
                 addShape(oval);
@@ -140,6 +146,20 @@ public class MyLine extends JPanel {
                 triangle.setColor(lineColor);
                 triangle.setWidth(widthSize);
                 addShape(triangle);
+            }
+            else{
+                Line line = new Line();
+                line.setColor(lineColor);  // Set the color of the new line to be drawn
+                line.setWidth(widthSize);  // Set the width of the new line to be drawn
+                line.getPoints().add(startPoint);  // Add a new point to the new line being drawn at the mouse press location
+                addShape(line);  // Add a new line to the list of shapes drawn
+            }
+             if (drawCircle && drawingMode){
+                int width = 0;
+                Circle circle = new Circle(startPoint, width);
+                circle.setColor(lineColor);
+                circle.setWidth(widthSize);
+                addShape(circle);
             }
             else{
                 Line line = new Line();
@@ -177,6 +197,13 @@ public class MyLine extends JPanel {
                 triangle.setColor(lineColor);  // Set the color of the new triangle to be drawn
                 triangle.setWidth(widthSize);  // Set the width of the new triangle to be drawn
                 addShape(triangle);  // Add a new triangle to the list of shapes drawn
+            }
+            else if (drawCircle && drawingMode) {  //getting the X and Y for an triangle
+                int width = me.getX() - startPoint.x;
+                Circle circle = new Circle(startPoint, width);
+                circle.setColor(lineColor);  // Set the color of the new circle to be drawn
+                circle.setWidth(widthSize);  // Set the width of the new circle to be drawn
+                addShape(circle);  // Add a new circle to the list of shapes drawn
             }
         }
 
@@ -316,5 +343,24 @@ public class MyLine extends JPanel {
             g2d.drawPolygon(xPoints, yPoints, nPoints);
         }
     }
+     
+     
+    public static class Circle extends Shape {         //Class for Circle
+            private Point startPoint;
+            private int width;
 
+            public Circle(Point startPoint, int width) {
+                this.startPoint = startPoint;
+                this.width = width;
+            }
+
+            @Override
+            public void draw(Graphics g) {
+                Graphics2D g2d = (Graphics2D) g;
+                g2d.setColor(getColor());  // Set the color of the current oval
+                g2d.setStroke(new BasicStroke(getWidth()));  // Set the width of the current oval
+
+                g2d.drawOval(startPoint.x, startPoint.y, width, width);  // Draw an oval with the given parameters
+            }
+        }
 }
