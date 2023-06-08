@@ -114,8 +114,7 @@ public class MyLine extends JPanel {
 
             if (drawSquare && drawingMode) {
                 int width = 0;
-                int height = 0;
-                Square square = new Square(startPoint, width, height);
+                Square square = new Square(startPoint, width);
                 square.setColor(lineColor);  // Set the color of the new square to be drawn
                 square.setWidth(widthSize);  // Set the width of the new square to be drawn
                 addShape(square);  // Add a new square to the list of shapes drawn
@@ -178,8 +177,7 @@ public class MyLine extends JPanel {
         public void mouseReleased(MouseEvent me) {
             if (drawSquare && drawingMode) {
                 int width = me.getX() - startPoint.x;
-                int height = me.getY() - startPoint.y;
-                Square square = new Square(startPoint, width, height);
+                Square square = new Square(startPoint, width);
                 square.setColor(lineColor);  // Set the color of the new square to be drawn
                 square.setWidth(widthSize);  // Set the width of the new square to be drawn
                 addShape(square);  // Add a new square to list of shapes drawn
@@ -283,12 +281,10 @@ public class MyLine extends JPanel {
     public static class Square extends Shape {
         private Point startPoint;
         private int width;
-        private int height;
 
-        public Square(Point startPoint, int width, int height) {
+        public Square(Point startPoint, int width) {
             this.startPoint = startPoint;
             this.width = width;
-            this.height = height;
         }
 
         @Override
@@ -297,7 +293,7 @@ public class MyLine extends JPanel {
             g2d.setColor(getColor());  // Set the color of the current square
             g2d.setStroke(new BasicStroke(getWidth()));  // Set the width of the current square
 
-            g2d.drawRect(startPoint.x, startPoint.y, width, height);  // Draw a square/rectangle with the given parameters
+            g2d.drawRect(startPoint.x, startPoint.y, width, width);  // Draw a square with the given parameters
         }
     }
 
