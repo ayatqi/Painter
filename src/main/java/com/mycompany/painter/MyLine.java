@@ -89,14 +89,9 @@ public class MyLine extends JPanel {
     public Shape[] getShapes() {
         return shapes.toArray(new Shape[0]); // Return the shapes drawn in the current mode
     }
-
-    public void clearShapes() {
-        shapes.clear(); // Clear the shapes drawn on the panel
-        repaint(); // Repaint the panel to update the drawing
-    }
     
     public void clear() {
-    shapes.clear(); // Clear the shapes drawn on the panel
+    shapes.clear(); // Clear the shapes and lines drawn on the panel
     repaint(); // Repaint the panel to update the drawing
 }
 

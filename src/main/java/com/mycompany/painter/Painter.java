@@ -31,8 +31,8 @@ public class Painter extends JFrame {
         JPanel contentPane = new JPanel(new BorderLayout());
         contentPane.add(line, BorderLayout.CENTER);
 
-        // Create the Colors button
-        JButton colorsButton = new JButton("Colors");
+        // Create the Colors/size  button
+        JButton colorsButton = new JButton("Colors/Size");
         colorsButton.setPreferredSize(new Dimension(110, 30));
 
         JButton shapeButton = new JButton("Shapes");

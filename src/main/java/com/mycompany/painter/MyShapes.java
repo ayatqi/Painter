@@ -17,11 +17,9 @@ import java.awt.*;
 
 public class MyShapes extends JPanel {
     private MyLine line;
-    private MyLine.Shape[] savedShapes;  // Array to store the previously drawn shapes
 
     public MyShapes(MyLine line) {
         this.line = line;
-        this.savedShapes = new MyLine.Shape[0];  // Initialize the array to store the previously drawn shapes
 
         JToolBar toolbar = new JToolBar();
         toolbar.setFloatable(false); // Disable toolbar floating
@@ -92,16 +90,6 @@ public class MyShapes extends JPanel {
         setLayout(new BorderLayout());
         add(toolbar, BorderLayout.PAGE_START);
         add(line, BorderLayout.CENTER);
-    }
-
-    public void saveShapes() {
-        savedShapes = line.getShapes(); // Save the currently drawn shapes
-        line.clearShapes(); // Clear the currently drawn shapes
-    }
-
-    public void restoreShapes() {
-        line.clearShapes(); // Clear the currently drawn shapes
-        line.setShapes(savedShapes); // Restore the previously drawn shapes
     }
 
 }
